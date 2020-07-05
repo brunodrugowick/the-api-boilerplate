@@ -82,7 +82,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
      * @param headers response headers
      * @param status response http status code
      * @param request request that originate this whole mess
-     * @return
+     * @return a {@link ResponseEntity} with the object to be returned to the client
      */
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {

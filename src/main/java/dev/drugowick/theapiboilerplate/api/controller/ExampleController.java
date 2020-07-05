@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,16 +35,16 @@ public class ExampleController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ExampleModel create(@RequestBody ExampleInput exampleInput) {
+    public ExampleModel create(@Valid @RequestBody ExampleInput exampleInput) {
         Example example = mapper.toDomain(exampleInput, Example.class);
-        return mapper.toModel(exampleRepository.save(example), ExampleModel.class);
+        return mapper.toModel(exampleService.create(example), ExampleModel.class);
     }
 
     @PutMapping("/{id}")
-    public ExampleModel update(@PathVariable String id, @RequestBody ExampleInput exampleInput) {
+    public ExampleModel update(@PathVariable String id, @Valid @RequestBody ExampleInput exampleInput) {
         Example example = exampleService.findOrElseThrow(id);
         mapper.copyToDomainObject(exampleInput, example);
-        return mapper.toModel(exampleRepository.save(example), ExampleModel.class);
+        return mapper.toModel(exampleService.createOrUpdate(example), ExampleModel.class);
     }
 
     @DeleteMapping("/{id}")

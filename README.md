@@ -39,6 +39,7 @@ There are 4 main packages for now. Alphabetically, they are:
 | Model Mapper | Maps objects from one type to another (http://modelmapper.org/) | 2.3.0 |
 | SpringFox | Generates OpenAPI (Swagger) documentation of the API (https://springfox.github.io/springfox/) | 2.9.2 |
 | Lombok | Java compile-time boilerplate code generator (https://projectlombok.org/) | 1.18.12 |
+| Apache Commons | I'm using ExceptionUtils for now (http://commons.apache.org/proper/commons-lang/) | 3.10 |
 
 # To-do
 
